@@ -1,4 +1,6 @@
-new Vue({
+const vm = new Vue({
+    created:{
+    },
     el: '#app',
     data: {
 
@@ -12,6 +14,8 @@ new Vue({
             username: 'restrella',
             role: 'admin'
         },
+
+        message: 'sdfsfds',
 
         tareas:[
             {nombre: 'Aprender JS moderno', tiempo: 3},
@@ -28,7 +32,9 @@ new Vue({
             this.tareas.unshift({
                 nombre: this.nuevaTarea,
                 tiempo: Math.floor(Math.random() * 100),
-            })
+            });
+
+            this.nuevaTarea = null;
         }
     },
     computed:{
