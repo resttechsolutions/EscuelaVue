@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <div id="app">
+            <form>
+                <label for="nombre">Nombre</label><br>
+                <input type="text" name="" id="nombre">
+
+                <br>
+
+                <label for="apellidos">Apellidos</label>
+                <br>
+                <input type="text" name="" id="apellidos">
+
+                <br>
+
+
+                <label for="direccion">Direccion de envío</label>
+                <br>
+                <select v-model="direccion" id="direccion">
+                    <option value="misma">Misma direccion que facturacion</option>
+                    <option value="nueva">Introducir nueva direccion</option>
+                </select>
+
+                <br>
+
+
+                <template v-if="direccion === 'nueva'">
+                    <label for="nueva-direccion">Nueva direccion</label><br>
+                    <textarea id="nueva-direccion" cols="30" rows="10"></textarea>
+                </template>
+
+                <br>
+
+
+                <div>
+                    <input type="checkbox" v-model="check" id="">
+                    <span>He leido y acepto la politica de privacidad.</span>
+                </div>
+
+                <br>
+
+                <input v-if="check === true" type="submit" value="Enviar">
+                <p v-else>Debes marcar el checkbox para poder enviar el formulario</p>
+            </form>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="Assets/js/app.js"></script>
+    </body>
+</html>
