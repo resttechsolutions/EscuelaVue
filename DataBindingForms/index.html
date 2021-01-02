@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            form{
+                font-family: sans-serif;
+            }
+
+            input:not(type="radio"),
+            textarea,
+            label,
+            select {
+                display: block;
+            }
+
+            label,
+            input[type="submit"] {
+                margin-top: 20px;
+                font-style: italic;
+            }
+
+            input,
+            textarea,
+            select {
+                min-width: 200px;
+            }
+
+            .invalido {
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+
+        <main id="app">
+            <form @submit.prevent="">
+                <label for="nombre">Nombre:</label>
+                <input type="text" v-model="form.nombre" required id="nombre" 
+                :class="{ invalido: !form.nombre }">
+                <br><br>
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" v-model="form.apellidos" required id="apellidos"
+                :class="{invalido: !form.apellidos}">
+                <br><br>
+                <label for="mensaje">Mensaje:</label>
+                <br>
+                <textarea required v-model="form.mensaje" id="mensaje" cols="30"
+                    rows="10" :class="{invalido: !form.mensaje}"></textarea>
+                    <br><br>
+
+                <label for="contacto">Hora de contacto:</label>
+                <br>
+                <span>Mañanas</span>
+                <input type="radio" value="mananas" v-model="form.contacto" id="mananas">
+                
+                <span>Trardes</span>
+                <input type="radio" value="tardes" v-model="form.contacto" id="tardes">
+                
+                <span>Noches</span>
+                <input type="radio" value="noches" v-model="form.contacto" id="noches">
+                <br><br>
+
+                <label for="productos">Productos:</label>
+                <br>
+                <select v-model="form.productos" id="productos" multiple>
+                    <option value="producto1">Producto 1</option>
+                    <option value="producto2">Producto 2</option>
+                    <option value="producto3">Producto 3</option>
+                </select>
+
+                <br><br>
+                <label for="acepta">Aceptación de condiciones:</label>
+                <br>
+                <span>Acepto el bla bla bla</span>
+                <input type="checkbox"  id="acepta" v-model="form.acepta">
+
+                <br><br>
+                <input type="submit" value="Enviar" v-if="form.acepta">
+
+                <br><br>
+                <pre> {{$data}} </pre>
+            </form>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="Assets/js/app.js"></script>
+    </body>
+</html>
